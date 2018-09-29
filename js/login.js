@@ -1,0 +1,135 @@
+var academicLists = [
+	{
+	academy:"经济管理学院",
+	major:[
+		"信息管理与信息系统",
+		"经济学",
+		"工程管理",
+		"工商管理类",
+		"创新创业实验班",
+		"信息技术会计实验班"
+		]
+	},
+	{
+	academy:"通信与信息工程学院",
+	major:[
+		"数字媒体技术",
+		"通信与信息类",
+		"通信工程专业卓越工程师班",
+		"广电与数字媒体类",
+		"通信学院IT精英班"
+		]
+	},
+	{
+	academy:"光电工程学院",
+	major:[
+		"电子工程类",
+		"光电信息科学与工程专业实验班"
+		]
+	},
+	{
+	academy:"计算机科学与技术学院",
+	major:[
+		"计算机与智能科学类",
+		"计算机科学与技术专业卓越工程师班"
+		]
+	},
+	{
+	academy:"外国语学院",
+	major:[
+		"英语类"
+		]
+	},
+	{
+	academy:"生物信息学院",
+	major:[
+		"生物医学工程",
+		"生物信息学",
+		"医学信息工程"
+		]
+	},
+	{
+	academy:"网络空间安全与信息法学院",
+	major:[
+		"信息安全专业卓越工程师班",
+		"法学类",
+		"网络安全类"
+		]
+	},
+	{
+	academy:"自动化学院",
+	major:[
+		"自动化与电气工程类",
+		"自动化卓越工程师班",
+		"机器人工程专业实验班"
+		]
+	},
+	{
+	academy:"软件工程学院",
+	major:[
+		"软件工程",
+		"英语+软件",
+		"日语+软件",
+		"软件工程专业卓越工程师班"
+		]
+	},
+	{
+	academy:"现代邮政学院",
+	major:[
+		"电子商务大类",
+		"邮政工程",
+		"物流管理专业实验班"
+		]
+	},
+];
+function showAcademy(){
+	academicLists.forEach(function(item,index,array){
+		var str = "<option value='"+item.academy+"'>"+item.academy+"</option>"
+		$('[name="studentCollege"]').append(str);
+	})
+}
+showAcademy();
+function showMajor(){
+	$('[name="studentMajor"]').html("<option>请选择专业</option>")
+	var academy = $('[name="studentCollege"]').val();
+	var majorLists=academicLists.filter(function(item,index,array){
+		return (item.academy==academy);
+	})
+	if(majorLists){
+		$('[name="studentMajor"]').removeAttr("disabled");
+		majorLists[0].major.forEach(function(item){
+			var str = "<option value='"+item+"'>"+item+"</option>"
+			$('[name="studentMajor"]').append(str);
+		})
+	}
+}
+$('[name="studentCollege"]').change(function(){
+	showMajor();
+})
+$('input').blur(function(){
+	var _this = $(this);
+	if(_this.val()==""){
+		_this.parent().addClass("has-error");
+	}else{
+		_this.parent().removeClass("has-error");
+	}
+})
+$('button').click(function(){
+	var form = $('#Signform');
+	$.ajax({
+		type:"POST",
+		url:"http://120.79.94.90:8080/recruit/student/insertOrUpdateStudent",
+		data:form.serialize(),
+		success:function(result){
+			var Result=JSON.parse(result);
+			if(Result.code!="OK"){
+				alert("提交失败，请检查数据");
+			}else{
+				alert("提交成功~");
+			}
+		},
+		error:function(){
+			console.log("err");
+		}
+	})
+})

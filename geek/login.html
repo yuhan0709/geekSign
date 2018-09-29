@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width,target-densitydpi=high-dpi,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<title>Geek工作室报名</title>
+	<link rel="stylesheet" type="text/css" href="css/login.css">
+	<script type="text/javascript" src="js/jquery-3.1.0.min.js"></script>
+	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1537887296565&di=686a8ca8e3df5fa909ef945d262c878e&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fblog%2F201411%2F01%2F20141101045249_NF285.thumb.700_0.jpeg">
+	<div class="container">
+	<div class="headerText">Geek招新报名</div>
+		<form id="Signform">
+			<div class="form-group">
+    			<input type="text" class="form-control input-lg" name="studentName" placeholder="姓名">
+ 	 		</div>
+ 	 		<div class="form-group">
+    			<select name="studentCollege" class="form-control input-lg">
+					<option>请选择学院</option>
+				</select>
+ 	 		</div>
+ 	 		<div class="form-group">
+    			<select disabled name="studentMajor" class="form-control input-lg">
+					<option>请选择专业</option>
+				</select>
+ 	 		</div>
+ 	 		<div class="form-group">
+    			<!-- <input type="text" class="form-control input-lg" name="setStudentGrade" placeholder="年级"/> -->
+    			<select name="studentGrade" class="form-control input-lg">
+					<option>请选择年级</option>
+					<option value="2017">2017</option>
+					<option value="2018">2018</option>
+				</select>
+ 	 		</div>
+ 	 		<div class="form-group">
+    			<input type="email" class="form-control input-lg" name="studentMail" placeholder="邮箱">
+ 	 		</div>
+ 	 		<div class="flex">
+				<input type="checkbox" name="studentDirection" value="前端"/>前端 
+				<input type="checkbox" name="studentDirection" value="后台"/>后台 
+				<input type="checkbox" name="studentDirection" value="Android"/>Android
+				<input type="checkbox" name="studentDirection" value="Python"/>Python 
+ 	 		</div>
+ 	 		<div class="form-group a">
+ 	 			<button type="button" class="btn btn-primary btn-lg btn-block">提交</button>
+ 	 		</div>
+		<form>
+	</div>
+	<script type="text/javascript" src="js/login.js"></script>
+</body>
+</html>
